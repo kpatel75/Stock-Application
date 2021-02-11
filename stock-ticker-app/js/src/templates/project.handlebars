@@ -1,0 +1,35 @@
+<div class="col-md-12 p3">
+    <ul class="list-group border border-primary list-group-horizontal-md">
+        <li class="list-group-item h3"><span>Symbol</span> {{metaData.symbol}}</li>
+        <li class="list-group-item"><span>Fetch Info</span> {{metaData.information}} for the last {{metaData.numOfDays}} days</li>
+        <li class="list-group-item"><span>Last Refreshed</span> {{dateFormatted metaData.lastRefreshed}}</li>
+    </ul>
+</div>
+
+<div class="col-md-12 p-3">
+    <div class="card shadow">
+        <div class="card-header">Current Day {{dateFormatted currentDay.date}}</div>
+        <ul class="list-group list-group-horizontal-md">
+            <li class="list-group-item"><span>Open Price: </span>{{currency currentDay.open}}</li>
+            <li class="list-group-item"><span>Close Price: </span>{{currency currentDay.close}}</li>
+            <li class="list-group-item"><span>Highest Price: </span>{{currency currentDay.high}}</li>
+            <li class="list-group-item"><span>Lowest Price: </span>{{currency currentDay.low}}</li>
+            <li class="list-group-item"><span>Volume: </span>{{currentDay.volume}}</li>
+        </ul>
+    </div>
+</div>
+
+{{#each currentFiveDays as |day|}}
+    <div class="col-md-6 col-lg-4 p-3">
+        <div class="card shadow">
+            <div class="card-header">{{dateFormatted day.date}}</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span>Open Price: </span>{{currency day.open}}</li>
+                <li class="list-group-item"><span>Close Price: </span>{{currency day.close}}</li>
+                <li class="list-group-item"><span>Highest Price: </span>{{currency day.high}}</li>
+                <li class="list-group-item"><span>Lowest Price: </span>{{currency day.low}}</li>
+                <li class="list-group-item"><span>Volume: </span>{{day.volume}}</li>
+            </ul>
+        </div>
+    </div>
+{{/each}}
